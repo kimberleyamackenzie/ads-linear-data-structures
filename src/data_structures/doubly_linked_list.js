@@ -31,33 +31,33 @@ class DoublyLinkedList {
   }
 
   insertHead(element) {
-    const newHead = new this.Node({ element });
+    const node = new this.Node({ element });
 
-    this._sentinel.next.prev = newHead;
-    newHead.next = this._sentinel.next;
-    this._sentinel.next = newHead;
-    newHead.prev = this._sentinel;
-    return newHead;
+    this._sentinel.next.prev = node;
+    node.next = this._sentinel.next;
+    this._sentinel.next = node;
+    node.prev = this._sentinel;
+    return node;
   }
 
   insertTail(element) {
-      const newTail = new this.Node({ element });
+      const node = new this.Node({ element });
 
-      this._sentinel.prev.next = newTail;
-      newTail.prev = this._sentinel.prev;
-      newTail.next = this._sentinel;
-      this._sentinel.prev = newTail;
-      return newTail;
+      this._sentinel.prev.next = node;
+      node.prev = this._sentinel.prev;
+      node.next = this._sentinel;
+      this._sentinel.prev = node;
+      return node;
   }
 
   removeHead() {
-    const headToRemove = this._sentinel.next;
-    return this.remove(headToRemove);
+    const head = this._head();
+    return this.remove(head);
   }
 
   removeTail() {
-    const tailToRemove = this._sentinel.prev;
-    return this.remove(tailToRemove);
+    const tail = this._tail();
+    return this.remove(tail);
   }
 
   remove(node) {
